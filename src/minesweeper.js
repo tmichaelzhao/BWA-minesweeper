@@ -1,8 +1,8 @@
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
-  let board = [];
-  for (i=0; i < numberOfRows; i++) {
-    let row = [];
-    for (j=0; j < numberOfColumns; j++) {
+  const board = [];
+  for (let rowIndex=0; rowIndex < numberOfRows; rowIndex++) {
+    const row = [];
+    for (columnIndex=0; columnIndex < numberOfColumns; columnIndex++) {
       row.push(" ");
     }
   board.push(row);
@@ -11,20 +11,20 @@ const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
 };
 
 const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
-  let board = [];
-  for (i=0; i < numberOfRows; i++) {
-    let row = [];
-    for (j=0; j < numberOfColumns; j++) {
+  const board = [];
+  for (let rowIndex=0; rowIndex < numberOfRows; rowIndex++) {
+    const row = [];
+    for (columnIndex=0; columnIndex < numberOfColumns; columnIndex++) {
       row.push(null);
     }
   board.push(row);
   }
   let numberOfBombsPlaced = 0;
   while (numberOfBombsPlaced < numberOfBombs) {
-    let randomRowIndex = Math.floor(Math.random() * numberOfRows);
-    let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+    const randomRowIndex = Math.floor(Math.random() * numberOfRows);
+    const randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
     board[randomRowIndex][randomColumnIndex] = "B";
-    numberOfBombsPlaced += 1;
+    numberOfBombsPlaced++;
   }
 
   return board;
@@ -34,8 +34,8 @@ const printBoard = (board) => {
   console.log(board.map(row => row.join(" | ")).join("\n"));
 }
 
-let playerBoard = generatePlayerBoard(3,4);
-let bombBoard = generateBombBoard(3,4,5);
+const playerBoard = generatePlayerBoard(16,16);
+const bombBoard = generateBombBoard(16,16,2);
 
 console.log("Player Board: ");
 printBoard(playerBoard);
